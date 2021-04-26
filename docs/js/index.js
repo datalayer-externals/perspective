@@ -1,3 +1,10 @@
+import perspective from "@finos/perspective";
+import "@finos/perspective-viewer";
+import "@finos/perspective-viewer-datagrid";
+import "@finos/perspective-viewer-d3fc";
+
+import "./logo.js";
+
 var SECURITIES = ["AAPL.N", "AMZN.N", "QQQ.N", "NVDA.N", "TSLA.N", "FB.N", "MSFT.N", "CSCO.N", "GOOGL.N", "PCLN.N"];
 var CLIENTS = ["Homer", "Marge", "Bart", "Lisa", "Maggie"];
 var id = 0;
@@ -138,7 +145,7 @@ window.addEventListener("DOMContentLoaded", async function() {
         data.push(newRow());
     }
     elem = Array.prototype.slice.call(document.querySelectorAll("perspective-viewer"))[0];
-    var worker = window.perspective.worker();
+    var worker = perspective.worker();
     var tbl = await worker.table(data, {index: "id"});
     elem.load(tbl);
     elem.toggleConfig();
